@@ -1,0 +1,15 @@
+Your Order
+===============================================
+Hello!
+
+This is a confirmation of your order, ID: <%= @order.id %>
+
+Items:
+
+<% @order.line_items.each do |item| %>
+  <%= item.product.name %> Qty: <%= item.quantity %> Item(s) Total: $<%= item.total_price_cents/100 %>
+<% end %>
+
+Total: <%= @order.total %>
+
+Thanks for your order!
