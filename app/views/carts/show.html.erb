@@ -3,7 +3,10 @@
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
+  <% if cart === {} %>
+  <%= render 'empty' %>
 
+  <% else %>
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -23,7 +26,7 @@
       <tfoot>
         <tr>
           <th colspan="4">
-            TOTAL:
+            TOTAL
           </th>
           <th>
             <%= @cart_total %>
@@ -49,5 +52,6 @@
       <% end %>
     </div>
   </div>
+  <% end %>
 
 </section>
