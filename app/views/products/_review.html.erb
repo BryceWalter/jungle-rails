@@ -6,7 +6,7 @@
   <p><%= review.description %></p>
   <p><%= review.created_at.to_date%></p>
 
-  <% if current_user %>
+  <% if current_user === review.user %>
     <p><%= link_to fa_icon('trash'), [@product, review], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %></p>
   <% else %>
   <% end %>
