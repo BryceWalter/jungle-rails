@@ -32,10 +32,11 @@ cat3 = Category.find_or_create_by! name: 'Furniture'
 ## PRODUCTS
 
 puts "Re-creating Products ..."
-
+Review.destroy_all
 Product.destroy_all
+User.destroy_all
 
-cat1.products.create!({
+prod1 = cat1.products.create!({
   name:  'Men\'s Classy shirt',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel1.jpg'),
@@ -43,7 +44,7 @@ cat1.products.create!({
   price: 64.99
 })
 
-cat1.products.create!({
+prod2 = cat1.products.create!({
   name:  'Women\'s Zebra pants',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel2.jpg'),
@@ -130,6 +131,79 @@ cat3.products.create!({
   image: open_asset('furniture3.jpg'),
   quantity: 0,
   price: 2_483.75
+})
+
+#Seeds the users table
+puts "Re-creating users..."
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password_digest: 'password',
+})
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password_digest: 'password',
+})
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password_digest: 'password',
+})
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password_digest: 'password',
+})
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password_digest: 'password',
+})
+
+#Seeds the reviews table
+puts "Re-creating reviews..."
+
+prod1.reviews.create!({
+  user_id: 4,
+  description: Faker::Hipster.paragraph(1),
+  rating: 4,
+})
+
+prod1.reviews.create!({
+  user_id: 3,
+  description: Faker::Hipster.paragraph(1),
+  rating: 3,
+})
+
+prod1.reviews.create!({
+  user_id: 4,
+  description: Faker::Hipster.paragraph(1),
+  rating: 2,
+})
+
+prod2.reviews.create!({
+  user_id: 2,
+  description: Faker::Hipster.paragraph(1),
+  rating: 5,
+})
+
+prod2.reviews.create!({
+  user_id: 3,
+  description: Faker::Hipster.paragraph(1),
+  rating: 1,
+})
+
+prod2.reviews.create!({
+  user_id: 4,
+  description: Faker::Hipster.paragraph(1),
+  rating: 1,
 })
 
 

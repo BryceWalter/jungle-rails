@@ -26,6 +26,46 @@
       </div>
     </div>
 
+    <!-- Review submission form hidden if not authenticated -->
+    <% if current_user %>
+    <br></br>
+      <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-8">
+          <h1>Leave a review</h1>
+          <hr>
+          <%= form_for [@product, @new_review]  do |f| %>
+            Rating: <%= f.select(:rating, options_for_select([[1], [2], [3], [4], [5]]))  %>
+            <br></br>
+            Review: <%= f.text_area :description, class: 'form-control'   %>
+            <br></br>
+
+          <%= f.submit "Submit", class: 'btn btn-primary' %>
+
+          <% end %>
+        </div>
+        <div class="col-sm-2">
+        </div>
+      </div>
+    <% else %>
+    <br></br>
+    <% end %>
+
+    <!-- List of all reviews for each item -->
+    <div class="row">
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-8">
+        <hr>
+        <% @reviews.each do |review| %>
+          <%= render 'review', review: review %>
+        <% end %>
+      </div>
+      <div class="col-sm-2">
+      </div>
+    </div>
+
   </article>
 
 </section>

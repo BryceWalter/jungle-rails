@@ -1,0 +1,15 @@
+<!-- Reviews partial rendered for each review -->
+<div class="well">
+  <h2><%= review.user.first_name %> <%= review.user.last_name %></h2>
+  <h4>Rating: <%= review.rating %>/5</h4>
+
+  <p><%= review.description %></p>
+  <p><%= review.created_at.to_date%></p>
+
+  <% if current_user %>
+    <p><%= link_to fa_icon('trash'), [@product, review], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %></p>
+  <% else %>
+  <% end %>
+</div>
+
+
