@@ -1,6 +1,4 @@
-class Admin::CategoriesController < ApplicationController
-  before_filter
-  http_basic_authenticate_with name: ENV['admin_name'], password: ENV['admin_pass']
+class Admin::CategoriesController < Admin::AdminApplicationController
 
   def index
     @categories = Category.order(:id).all

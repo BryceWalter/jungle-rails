@@ -1,7 +1,4 @@
-class Admin::DashboardController < ApplicationController
-  before_filter
-  http_basic_authenticate_with name: ENV['admin_name'], password: ENV['admin_pass']
-
+class Admin::DashboardController < Admin::AdminApplicationController
   def show
   end
 
