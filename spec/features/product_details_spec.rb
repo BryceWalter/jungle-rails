@@ -1,12 +1,11 @@
 require 'rails_helper'
 
-RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
-
-   # SETUP
+RSpec.feature "Visitor selects a single product", type: :feature, js: true do
+  # SETUP
   before :each do
     @category = Category.create! name: 'Apparel'
 
-    10.times do |n|
+    1.times do |n|
       @category.products.create!(
         name:  Faker::Hipster.sentence(3),
         description: Faker::Hipster.paragraph(4),
@@ -17,14 +16,15 @@ RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
     end
   end
 
-  scenario "They see all products" do
-    # ACT
+  scenario 'they see a single product page' do
+
     visit root_path
 
-    # DEBUG / VERIFY
-    # save_screenshot
+    find('h4').click
 
-    expect(page).to have_css 'article.product', count: 10
+    expect(page).to have_content 'Description'
+
+    save_screenshot
   end
 
 end
